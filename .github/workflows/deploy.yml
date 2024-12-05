@@ -5,6 +5,10 @@ on:
     branches:
       - main # Déclenche la pipeline sur les modifications de la branche main
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
