@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './beach.component.scss',
 })
 export class BeachComponent {
-  imageSrc = '../assets/beach.jpg';
+  imageSrc = '/assets/images/tropical-pixel-beach-with-surf_573660-418.png';
   images: { src: string; position: [number, number] }[] = [];
   imagePosition: [number, number] = [0, 0];
   private intervalId: any;
@@ -28,7 +28,7 @@ export class BeachComponent {
   addImage() {
     if (this.imageCount < this.maxImages) {
       const newImage = {
-        src: '../assets/beach.jpg', // Replace with the actual path to your image
+        src: '/assets/images/trash1.png', // Replace with the actual path to your image
         position: this.randomScreenCoordinates(),
       };
       this.images.push(newImage);
