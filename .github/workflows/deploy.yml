@@ -27,12 +27,14 @@ jobs:
       - name: Build Angular App
         run: npm run build -- --base-href "/clean-the-ocean/"
 
-      # 5. Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
         with:
-          branch: gh-pages # Branche cible pour GitHub Pages
-          folder: dist/clean-the-ocean # Dossier contenant les fichiers à déployer
+          source: ./
+          destination: ./_site
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
 
   deploy:
     environment:
