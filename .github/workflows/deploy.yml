@@ -8,45 +8,32 @@ on:
 permissions:
   id-token: write
   contents: read
-
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout the repository
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
+      # 2. Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '16' # Assurez-vous d'utiliser une version compatible avec Angular CLI
 
+      # 3. Install dependencies
       - name: Install Dependencies
         run: npm install
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
+      # 4. Build the Angular app
       - name: Build Angular App
-        run: npm run build -- --base-href "/clean-the-ocean/"
+        run: npm run build -- --base-href "/<repository-name>/"
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
+      # 5. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # Branche cible pour GitHub Pages
+          folder: dist/your-project-name # Dossier contenant les fichiers à déployer
