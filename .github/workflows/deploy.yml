@@ -1,0 +1,36 @@
+name: Deploy Angular App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Déclenche la pipeline sur les modifications de la branche main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # 2. Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Assurez-vous d'utiliser une version compatible avec Angular CLI
+
+      # 3. Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # 4. Build the Angular app
+      - name: Build Angular App
+        run: npm run build -- --base-href "/clean-the-ocean/"
+
+      # 5. Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # Branche cible pour GitHub Pages
+          folder: dist/clean-the-ocean # Dossier contenant les fichiers à déployer
