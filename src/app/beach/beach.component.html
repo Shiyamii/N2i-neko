@@ -1,0 +1,8 @@
+<p>aaa</p>
+
+
+<img [src]="imageSrc" [style.left.px]="imagePosition[0]" [style.top.px]="imagePosition[1]" style="position: absolute;">
+
+@for (i of images; track i) {
+  <img [src]="i.src" [style.left.px]="i.position[0]" [style.top.px]="i.position[1]" style="position: absolute;" alt="aaa" (click)="imgClick(i)">
+}
