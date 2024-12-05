@@ -37,4 +37,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # Branche cible pour GitHub Pages
-          folder: dist/your-project-name # Dossier contenant les fichiers à déployer
+          folder: dist/clean-the-ocean # Dossier contenant les fichiers à déployer
