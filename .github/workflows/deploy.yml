@@ -42,6 +42,10 @@ jobs:
       - name: Verify build output
         run: ls dist/clean-the-ocean/browser
 
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       # 5. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
