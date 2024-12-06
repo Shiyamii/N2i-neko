@@ -6,7 +6,7 @@
   width: 100vw;
   height: 100vh;
   z-index: -1; /* Derrière tout le contenu */
-  background-image: url('./assets/images/tropical-pixel-beach-with-surf_573660-418.png');
+  background-image: var(--css-prefix);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

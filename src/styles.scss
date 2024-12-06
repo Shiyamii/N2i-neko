@@ -4,3 +4,7 @@ html, body {
   height: 100%; /* Assure que le body s'étend à la fenêtre */
   overflow: hidden; /* Évite les barres de défilement */
 }
+
+* {
+  --css-prefix: url("/assets/images/tropical-pixel-beach-with-surf_573660-418.png");
+}

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-beach',
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './beach.component.html',
   styleUrl: './beach.component.scss',
 })
-export class BeachComponent {
+export class BeachComponent implements OnInit{
   images: { src: string; position: [number, number] }[] = [];
   imagePosition: [number, number] = [0, 0];
   private intervalId: any;
@@ -18,9 +19,12 @@ export class BeachComponent {
   private maxImages = 100;
   private rdm: number = 1;
   score: number = 0;
+  styles = {
+    "--css-prefix": "url(" +environment.prefix + '/assets/images/tropical-pixel-beach-with-surf_573660-418.png)',
+  }
 
   ngOnInit(): void {
-    this.updateImagePosition();
+     this.updateImagePosition();
   }
 
   randomScreenCoordinates(): [number, number] {
@@ -41,7 +45,7 @@ export class BeachComponent {
     if (this.imageCount < this.maxImages) {
       this.rdm = Math.floor((Math.random() * 6) + 1);
       const newImage = {
-        src: './assets/images/Picture'+ this.rdm +'.png', // Replace with the actual path to your image
+        src: environment.prefix+'/assets/images/Picture'+ this.rdm +'.png', // Replace with the actual path to your image
         position: this.randomScreenCoordinates(),
       };
       this.images.push(newImage);

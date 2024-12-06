@@ -133,3 +133,6 @@ dist
 # jetbrains
 .idea/
 docs
+
+# angular
+.angular/cache
