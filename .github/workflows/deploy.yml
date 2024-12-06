@@ -39,6 +39,10 @@ jobs:
       - name: Build Angular App
         run: npm run build -- --base-href "/N2i-neko/"
 
+      - name: Verify build output
+        run: ls dist/your-project-name
+
+
       # 5. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
