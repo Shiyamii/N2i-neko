@@ -187,10 +187,4 @@ This project was created by the MIAGE team "**Neko x Ficsit Corporations**" duri
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 Join us in the mission to **Clean the Ocean** and protect marine life! 🌊🦈🐟
