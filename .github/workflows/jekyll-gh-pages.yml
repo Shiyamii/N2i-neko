@@ -28,7 +28,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Token: $GITHUB_TOKEN
+          echo "Token: $GITHUB_TOKEN"
 
       # 2. Set up Node.js
       - name: Set up Node.js
