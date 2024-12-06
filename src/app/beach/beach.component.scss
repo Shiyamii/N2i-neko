@@ -58,6 +58,11 @@
   height: 9%;
   width: auto;
   transition: 0.1s ease-in-out; /* Animation plus lente pour un effet fluide */
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .trash:hover {

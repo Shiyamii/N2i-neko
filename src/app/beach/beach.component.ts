@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {environment} from "../../environments/environment";
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-beach',
@@ -11,20 +11,23 @@ import {environment} from "../../environments/environment";
   templateUrl: './beach.component.html',
   styleUrl: './beach.component.scss',
 })
-export class BeachComponent implements OnInit{
+export class BeachComponent implements OnInit {
   images: { src: string; position: [number, number] }[] = [];
-  imagePosition: [number, number] = [0, 0];
-  private intervalId: any;
   imageCount = 0;
   private maxImages = 100;
   private rdm: number = 1;
   score: number = 0;
   styles = {
-    "--css-prefix": "url(" +environment.prefix + '/assets/images/tropical-pixel-beach-with-surf_573660-418.png)',
-  }
+    '--css-prefix': 'url(' + environment.prefix + '/assets/images/tropical-pixel-beach-with-surf_573660-418.png)',
+  };
+  isGameOver: boolean = false;
 
   ngOnInit(): void {
-     this.updateImagePosition();
+    this.gameEngine();
+  }
+
+  gameEngine() {
+    this.updateImagePosition();
   }
 
   randomScreenCoordinates(): [number, number] {
@@ -32,46 +35,57 @@ export class BeachComponent implements OnInit{
     const width = window.innerWidth;
 
     const x = Math.floor(Math.random() * (window.innerWidth - width * 0.1));
-
     const y = Math.floor(Math.random() * (window.innerHeight - height * 0.75)) + height * 0.35;
 
     return [x, y];
   }
 
-
-
-
   addImage() {
-    if (this.imageCount < this.maxImages) {
-      this.rdm = Math.floor((Math.random() * 6) + 1);
-      const newImage = {
-        src: environment.prefix+'/assets/images/Picture'+ this.rdm +'.png', // Replace with the actual path to your image
-        position: this.randomScreenCoordinates(),
-      };
-      this.images.push(newImage);
-      this.imageCount++;
-    } else {
-      clearInterval(this.intervalId);
-    }
+    this.rdm = Math.floor((Math.random() * 6) + 1);
+    const newImage = {
+      src: environment.prefix + '/assets/images/Picture' + this.rdm + '.png', // Replace with the actual path to your image
+      position: this.randomScreenCoordinates(),
+    };
+    this.images.push(newImage);
+    this.imageCount++;
   }
 
   updateImagePosition() {
-    // Generate random x and y coordinates within the window during 60 seconds
-    this.intervalId = setInterval(() => {
+    const baseDelay = 500; // Délai initial en millisecondes
+    const minDelay = 100;  // Délai minimum
+    const scoreFactor = 10; // Réduction de délai par tranche de score
+
+    const executeWithDynamicDelay = () => {
       this.addImage();
-      // Si le nombre d'images dépasse 15, arrêtez l'intervalle
-      if (this.imageCount > this.maxImages) {
-        clearInterval(this.intervalId); // Arrêter l'intervalle
+
+      if (this.imageCount >= this.maxImages) {
+        this.isGameOver = true;
+        return;
       }
-    }, 500);
+
+      let delay = baseDelay - this.score * scoreFactor;
+      if (delay < minDelay) {
+        delay = minDelay;
+      }
+      setTimeout(executeWithDynamicDelay, delay);
+    };
+    executeWithDynamicDelay();
   }
 
   imgClick(event: { src: string; position: [number, number] }) {
-    console.log('Image clicked', event);
-    // Remove the image from the screen and decrease the image count
-    this.images = this.images.filter((img) => img !== event);
-    this.imageCount--;
-    this.score++;
+    if (this.imageCount < this.maxImages) {
+      this.images = this.images.filter((img) => img !== event);
+      this.imageCount--;
+      this.score++;
+    }
+  }
+
+  replay() {
+    this.isGameOver = false;
+    this.images = [];
+    this.imageCount = 0;
+    this.score = 0;
+    this.gameEngine();
   }
 
   getImageCountColor(): { [key: string]: string } {

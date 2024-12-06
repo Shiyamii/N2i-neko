@@ -2,12 +2,17 @@
 
 <div class="content">
   <label>Score</label>
-  <span>{{score}}</span>
+  <span>{{ score }}</span>
   <label>Nombre de détritus</label>
-  <span [ngStyle]="getImageCountColor()">{{imageCount}}</span>
-
-
+  <span [ngStyle]="getImageCountColor()">{{ imageCount }}</span>
+  @if (isGameOver) {
+    <div class="content">
+      <Label>la loose</Label>
+      <button (click)="replay()">Replay ?</button>
+    </div>
+  }
 </div>
 @for (i of images; track i) {
-  <img class="trash" [src]="i.src" [style.left.px]="i.position[0]" [style.top.px]="i.position[1]" style="" alt="aaa" (click)="imgClick(i)">
+  <img class="trash" [src]="i.src" [style.left.px]="i.position[0]" [style.top.px]="i.position[1]" style="" alt="aaa"
+       (click)="imgClick(i)">
 }
