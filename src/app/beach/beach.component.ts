@@ -41,7 +41,7 @@ export class BeachComponent {
     if (this.imageCount < this.maxImages) {
       this.rdm = Math.floor((Math.random() * 6) + 1);
       const newImage = {
-        src: '/assets/images/Picture'+ this.rdm +'.png', // Replace with the actual path to your image
+        src: './assets/images/Picture'+ this.rdm +'.png', // Replace with the actual path to your image
         position: this.randomScreenCoordinates(),
       };
       this.images.push(newImage);
