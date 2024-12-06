@@ -47,3 +47,4 @@ jobs:
         with:
           branch: gh-pages # Branche cible pour GitHub Pages
           folder: dist/clean-the-ocean/browser # Dossier contenant les fichiers à déployer
+          token: ${{ secrets.GITHUB_TOKEN }} # Utilise le token GitHub Actions
