@@ -42,12 +42,12 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./dist/clean-the-ocean/browser
-          destination: "./dist/clean-the-ocean/browser/output"
+          source: ./docs/browser
+          destination: "./_site"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./dist/clean-the-ocean/browser/output"
+          path: "./_site"
 
   # Deployment job
   deploy:
