@@ -49,7 +49,7 @@ By playing, users learn about the urgency of keeping our seas healthy, as they a
    ```
    http://localhost:4200/
    ```
-3. Begin cleaning the ocean by clicking on waste icons (`déchets`) before they pile up!
+3. Begin cleaning the ocean by clicking on waste icons before they pile up!
 
 ---
 
