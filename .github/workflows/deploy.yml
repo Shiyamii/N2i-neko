@@ -40,7 +40,7 @@ jobs:
         run: npm run build -- --base-href "/N2i-neko/"
 
       - name: Verify build output
-        run: ls dist/your-project-name
+        run: ls dist/clean-the-ocean
 
 
       # 5. Deploy to GitHub Pages
