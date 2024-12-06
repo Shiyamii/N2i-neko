@@ -39,18 +39,15 @@ jobs:
           npm install
           npm run build
 
-      - name: print files
-        run: |
-          ls -la
-          ls -la _site
-
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
-          destination: ./_site
+          source: ./dist/clean-the-ocean/browser
+          destination: "./output"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./output"
 
   # Deployment job
   deploy:
