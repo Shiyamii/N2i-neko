@@ -58,8 +58,8 @@ jobs:
     needs: build
     steps:
       # print all folder
-      - name: List all files
-        run: ls
+      - name: List all folder
+        run: ls -la
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
