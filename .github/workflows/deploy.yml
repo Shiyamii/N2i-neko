@@ -40,7 +40,7 @@ jobs:
         run: npm run build -- --base-href "/N2i-neko/"
 
       - name: Verify build output
-        run: ls dist/clean-the-ocean
+        run: ls dist/clean-the-ocean/browser
 
 
       # 5. Deploy to GitHub Pages
@@ -48,4 +48,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # Branche cible pour GitHub Pages
-          folder: dist/clean-the-ocean # Dossier contenant les fichiers à déployer
+          folder: dist/clean-the-ocean/browser # Dossier contenant les fichiers à déployer
