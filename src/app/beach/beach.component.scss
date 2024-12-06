@@ -1,10 +1,66 @@
+/* Arrière-plan */
 .bg-image {
+  position: fixed; /* Positionné par rapport à la fenêtre */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Derrière tout le contenu */
   background-image: url('/assets/images/tropical-pixel-beach-with-surf_573660-418.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 100vw; /* Largeur complète de la fenêtre */
-  height: 100vh; /* Hauteur visible de la fenêtre */
-  margin: 0; /* Supprime les marges */
-  padding: 0; /* Supprime les espacements */
+}
+
+/* Contenu principal */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  color: white; /* Texte en blanc pour un meilleur contraste sur fond sombre */
+  font-family: 'Arial', sans-serif; /* Police moderne et lisible */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacement entre les éléments */
+  align-items: flex-start; /* Aligner le contenu à gauche */
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour faire ressortir le texte */
+  border-radius: 8px; /* Bords arrondis pour un aspect moderne */
+  max-width: 400px; /* Largeur maximum du bloc */
+  margin: 30px auto; /* Centré sur la page avec un peu d'espace en haut */
+}
+
+/* Style des labels */
+.content label {
+  font-size: 22px; /* Taille plus grande pour les labels */
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #FFD700; /* Or pour un effet lumineux */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Ombre pour mieux se détacher du fond */
+}
+
+/* Style des spans (valeurs) */
+.content span {
+  font-size: 24px; /* Valeur légèrement plus grande que le label */
+  font-weight: bold;
+  color: #4CAF50; /* Couleur verte pour indiquer un bon score ou nombre */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Ombre similaire pour la lisibilité */
+}
+
+/* Mise en forme des images */
+.content img {
+  position: absolute;
+  transition: transform 0.3s ease; /* Animation douce lors de l'interaction */
+}
+
+.trash {
+  position: absolute;
+  height: 9%;
+  width: auto;
+  transition: 0.1s ease-in-out; /* Animation plus lente pour un effet fluide */
+}
+
+.trash:hover {
+  scale: 110%; /* Agrandir l'image au survol */
+  transition: 0.1s ease-in-out; /* Animation plus lente pour un effet fluide */
 }

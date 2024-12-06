@@ -1,8 +1,13 @@
 <div class="bg-image"></div>
 
+<div class="content">
+  <label>Score</label>
+  <span>{{score}}</span>
+  <label>Nombre de détritus</label>
+  <span [ngStyle]="getImageCountColor()">{{imageCount}}</span>
 
-<img [src]="imageSrc" [style.left.px]="imagePosition[0]" [style.top.px]="imagePosition[1]" style="position: absolute;">
 
+</div>
 @for (i of images; track i) {
-  <img [src]="i.src" [style.left.px]="i.position[0]" [style.top.px]="i.position[1]" style="position: absolute;" alt="aaa" (click)="imgClick(i)">
+  <img class="trash" [src]="i.src" [style.left.px]="i.position[0]" [style.top.px]="i.position[1]" style="" alt="aaa" (click)="imgClick(i)">
 }
